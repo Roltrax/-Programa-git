@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUMEN - Carrito de Compras</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="./img/logo.png" alt="Logo de Lumen" />
+        <span>LUMEN</span>
+      </div>
+       <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+        <li><a href="histCompra.html">Historial</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="carrito-grid">
+    <h1>Carrito de Compras</h1>
+
+    <section id="contenedorCarrito" class="carrito-contenido" aria-live="polite">
+      <p id="carritoVacio">Tu carrito está vacío</p>
+      <!-- Aquí se insertan los productos dinámicamente -->
+    </section>
+
+    <section class="carrito-acciones">
+      <span id="totalCarrito">Total: $0</span>
+      <button id="btnFinalizar" class="btn-finalizar" aria-label="Finalizar compra">Finalizar compra</button>
+    </section>
+  </main>
+
+   <footer>
+    <p>© 2025 <strong>LUMEN</strong>. Todos los derechos reservados.</p>
+   <section class="footer-info">
+    <a href="">Sobre nosotros</a>
+    <a href="">Contacto</a>
+    <a href="">Términos y condiciones</a>
+    </section>
+  </footer>
+
+  <script>
+    document.getElementById('btnFinalizar').addEventListener('click', function() {
+      alert('¡Gracias por tu compra!'); 
+      // Aquí podrías agregar lógica para procesar la compra
+    });
+
+    function actualizarTotal(total) {
+      document.getElementById('totalCarrito').textContent = `Total: $${total}`;
+    }
+
+  const contenedorCarrito = document.getElementById('contenedorCarrito');
+  const totalCarrito = document.getElementById('totalCarrito');
+  const btnFinalizar = document.getElementById('btnFinalizar');
+
+  // Ejemplo: productos simulados
+  const carrito = [
+    { nombre: 'Zapatillas deportivas', precio: 120000 },
+    { nombre: 'Camiseta running', precio: 85000 }
+  ];
+
+  // Mostrar los productos
+  if (carrito.length > 0) {
+    document.getElementById('carritoVacio').style.display = 'none';
+    carrito.forEach(item => {
+      const producto = document.createElement('div');
+      producto.classList.add('producto-carrito');
+      producto.innerHTML = `
+        <h3>${item.nombre}</h3>
+        <p>Precio: $${item.precio.toLocaleString()}</p>
+      `;
+      contenedorCarrito.appendChild(producto);
+    });
+
+    // Calcular total
+    const total = carrito.reduce((acc, prod) => acc + prod.precio, 0);
+    actualizarTotal(total);
+  }
+
+  // Evento de finalizar compra
+  btnFinalizar.addEventListener('click', () => {
+    alert('¡Gracias por tu compra!');
+    contenedorCarrito.innerHTML = '<p id="carritoVacio">Tu carrito está vacío</p>';
+    actualizarTotal(0);
+  });
+
+  // Actualiza el total en pantalla
+  function actualizarTotal(total) {
+    totalCarrito.textContent = `Total: $${total.toLocaleString()}`;
+  }
+
+  </script>
+</body>
+</html>
+
+

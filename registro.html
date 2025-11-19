@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro - LUMEN</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="./img/logo.png" alt="logo-lumen">
+        <span>LUMEN</span>
+      </div>
+       <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+        <li><a href="histCompra.html">Historial</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- FORMULARIO DE REGISTRO -->
+  <main class="contenedor-registro">
+    <section class="formulario-container">
+      <h2>Registro de usuario</h2>
+
+      <form class="formulario" id="formRegistro">
+        <label for="nombre">Nombre y Apellido</label>
+        <input type="text" id="nombre" placeholder="Ingrese nombre y apellido" required />
+
+        <label for="documento">Documento de Identidad</label>
+        <input type="text" id="documento" placeholder="Ingrese su ID" pattern="[0-9]{6,12}" title="Ingrese solo números (mínimo 6 dígitos)" required />
+
+        <label for="fecha">Fecha de nacimiento</label>
+        <input type="date" id="fecha" required />
+
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" placeholder="Ingrese su correo" required />
+
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="Ingrese una contraseña" minlength="6" required />
+
+        <button type="submit" class="btn-registrarse">Registrarse</button>
+      </form>
+    </section>
+  </main>
+
+    <!-- PIE DE PÁGINA -->
+   <footer>
+    <p>© 2025 <strong>LUMEN</strong>. Todos los derechos reservados.</p>
+   <section class="footer-info">
+    <a href="">Sobre nosotros</a>
+    <a href="">Contacto</a>
+    <a href="">Términos y condiciones</a>
+    </section>
+  </footer>
+
+  <script>
+  // Validación y mensaje simulado de registro
+  document.getElementById('formRegistro').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value;
+    const documento = document.getElementById('documento').value;
+    const fecha = document.getElementById('fecha').value;
+    const correo = document.getElementById('correo').value;
+    const password = document.getElementById('password').value;
+
+    if (nombre && documento && fecha && correo && password) {
+      alert('Registro exitoso. ¡Bienvenido a LUMEN, ' + nombre + '!');
+    } else {
+      alert('Por favor, complete todos los campos antes de registrarse.');
+    }
+  });
+</script>
+
+
+</body>
+</html>

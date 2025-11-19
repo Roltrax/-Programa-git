@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUMEN - Inicia Sesión</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header class="hero">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <img src="./img/logo.png" alt="Logo de Lumen" />
+        <span>LUMEN</span>
+      </a>
+       <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+        <li><a href="histCompra.html">Historial</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="contenedor-registro">
+    <section class="formulario-container">
+      <h1 id="titulo-login">Inicia sesión</h1>
+      <form class="formulario" id="formLogin" method="post" action="#">
+        
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required aria-label="Campo para correo electrónico" />
+
+        <label for="password">Contraseña</label>
+        <div class="password-field">
+          <input type="password" id="password" name="password" placeholder="Escribe tu contraseña" required aria-label="Campo para contraseña" />
+          <button type="button" class="toggle-pass" aria-label="Mostrar contraseña">👁️</button>
+        </div>
+
+        <a href="restpassword.html" class="link">¿Olvidaste tu contraseña?</a>
+
+        <button type="submit" class="btn-iniciar">Iniciar sesión</button>
+        <a href="registro.html" class="registro">¿No tienes cuenta? ¡Regístrate!</a>
+      </form>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+   <footer>
+    <p>© 2025 <strong>LUMEN</strong>. Todos los derechos reservados.</p>
+   <section class="footer-info">
+    <a href="">Sobre nosotros</a>
+    <a href="">Contacto</a>
+    <a href="">Términos y condiciones</a>
+    </section>
+  </footer>
+
+  <script>
+    // Toggle de visibilidad de la contraseña
+    const togglePassBtn = document.querySelector('.toggle-pass');
+    const passwordInput = document.getElementById('password');
+
+    togglePassBtn.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      togglePassBtn.textContent = type === 'password' ? '👁️' : '🙈';
+    });
+  </script>
+ 
+</body>
+</html>

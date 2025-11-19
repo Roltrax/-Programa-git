@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUMEN - Catálogo</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="./img/logo.png" alt="Logo de Lumen">
+        <span>LUMEN</span>
+      </div>
+       <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+        <li><a href="histCompra.html">Historial</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="busqueda-filtros">
+      <h1 class="titulo-catalogo">Historial de compras</h1>
+      <div class="filtros">
+        <input type="text" id="busqueda" placeholder="Buscar en el historial..." />
+        <select id="filtroCategoria">
+          <option class="valor"  value="">Todas los productos</option>
+          <option class="valor" value="camisas">Ultimas 24 horas</option>
+          <option class="valor" value="pantalones">Ultimos 7 dias</option>
+          <option class="valor" value="accesorios">El mes pasado</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="galeria" id="galeria">
+      <article class="producto" data-categoria="camisas">
+        <img src="https://via.placeholder.com/150" alt="Camisa básica">
+        <h3>Compra #12</h3>
+        <p>Fecha: 05/08/2025</p>
+        <p>Total: $150.000</p>
+        <button class="btn-detalles">Ver detalles</button>
+      </article>
+
+      <article class="producto" data-categoria="camisas">
+        <img src="https://via.placeholder.com/150" alt="Jean negro">
+        <h3>Compra #13</h3>
+        <p>Fecha: 06/16/2025</p>
+        <p>Total: $185.000</p>
+        <button class="btn-detalles">Ver detalles</button>
+      </article>
+    </section>
+
+      
+  </main>
+  
+
+   <footer>
+    <p>© 2025 <strong>LUMEN</strong>. Todos los derechos reservados.</p>
+   <section class="footer-info">
+    <a href="">Sobre nosotros</a>
+    <a href="">Contacto</a>
+    <a href="">Términos y condiciones</a>
+    </section>
+  </footer>
+
+  <script>
+    const busquedaInput = document.getElementById('busqueda');
+    const filtroCategoria = document.getElementById('filtroCategoria');
+    const productos = document.querySelectorAll('.producto');
+
+    function filtrarProductos() {
+      const terminoBusqueda = busquedaInput.value.toLowerCase();
+      const categoriaSeleccionada = filtroCategoria.value;
+
+      productos.forEach(producto => {
+        const nombreProducto = producto.querySelector('h3').textContent.toLowerCase();
+        const categoriaProducto = producto.getAttribute('data-categoria');
+
+        const coincideBusqueda = nombreProducto.includes(terminoBusqueda);
+        const coincideCategoria = categoriaSeleccionada === '' || categoriaProducto === categoriaSeleccionada;
+
+        if (coincideBusqueda && coincideCategoria) {
+          producto.style.display = 'block';
+        } else {
+          producto.style.display = 'none';
+        }
+      });
+    }
+
+    busquedaInput.addEventListener('input', filtrarProductos);
+    filtroCategoria.addEventListener('change', filtrarProductos);
+  </script>
+</body>
+</html>

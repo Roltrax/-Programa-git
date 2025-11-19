@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUMEN - Inicia Sesión</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header class="hero">
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <img src="./img/logo.png" alt="Logo de Lumen" />
+        <span>LUMEN</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+        <li><a href="histCompra.html">Historial</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="contenedor-registro">
+    <section class="formulario-container">
+      <h1 id="titulo-login">Perfil de usuario</h1>
+        <form id="formLogin" class="formulario">
+            <label for="nombre">Nombre y Apellido</label>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre" />
+    
+            <label for="documento">Documento</label>
+            <input type="text" id="documento" placeholder="Ingrese su documento" />
+    
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" placeholder="Ingrese su correo" />
+    
+            <label for="fecha">Fecha de Nacimiento</label>
+            <input type="date" id="fecha" />
+    
+            <button type="submit" class="btn-guardar">Guardar Cambios</button>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>© 2025 <strong>LUMEN</strong>. Todos los derechos reservados.</p>
+   <section class="footer-info">
+    <a href="">Sobre nosotros</a>
+    <a href="">Contacto</a>
+    <a href="">Términos y condiciones</a>
+    </section>
+  </footer>
+  <script>
+    const formLogin = document.getElementById('formLogin');
+
+    // Cargar datos del usuario al cargar la página
+    window.addEventListener('load', () => {
+      const usuario = JSON.parse(localStorage.getItem('usuario'));
+      if (usuario) {
+        document.getElementById('nombre').value = usuario.nombre || '';
+        document.getElementById('documento').value = usuario.documento || '';
+        document.getElementById('correo').value = usuario.correo || '';
+        document.getElementById('fecha').value = usuario.fecha || '';
+      }
+    });
+
+    // Guardar cambios al enviar el formulario
+    formLogin.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const usuario = {
+        nombre: document.getElementById('nombre').value,
+        documento: document.getElementById('documento').value,
+        correo: document.getElementById('correo').value,
+        fecha: document.getElementById('fecha').value,
+      };
+      localStorage.setItem('usuario', JSON.stringify(usuario));
+      alert('¡Cambios guardados exitosamente!');
+    });
+  </script>
+ 
+</body>
+</html>
